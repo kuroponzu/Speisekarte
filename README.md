@@ -1,0 +1,2 @@
+# Speisekarte
+show weekly menu
