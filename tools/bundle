@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+#
+# bundlerを実行するためのラッパー
+#
+
+compose_run_option="--rm"
+rails_env="development"
+rails_option=""
+
+docker-compose run ${compose_run_option} \
+ -e RAILS_ENV=${rails_env}\
+ backend bundle "$@"

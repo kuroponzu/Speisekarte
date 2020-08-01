@@ -32,6 +32,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry-byebug', '~> 3.9' # binding.pryを使用するため
   gem "dotenv-rails" # 環境変数を呼び出すため
+  gem 'pry-rails', '~> 0.3.9' # rails cの結果を見やすくするため
 end
 
 group :development do
