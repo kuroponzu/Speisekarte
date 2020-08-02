@@ -1,0 +1,18 @@
+mutation($id: Int! ,$title: String!, $description: String!, $cookingTime: Int!){
+  updateRecipe(
+    input: {
+    id: $id,
+    title: $title,
+    description: $description,
+    cookingTime: $cookingTime,
+    }
+  )
+  {
+    recipe {
+      id
+      title
+      description
+      cookingTime
+    }
+  }
+}

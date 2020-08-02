@@ -1,13 +1,15 @@
-mutation($id: Intger!){
+mutation($id: Int!){
   deleteRecipe(
     input: {
-      id: $id
+      id: $id,
     }
-    recipe{
+  )
+  {
+    recipe {
       id
       title
       description
       cookingTime
     }
-  )
+  }
 }
