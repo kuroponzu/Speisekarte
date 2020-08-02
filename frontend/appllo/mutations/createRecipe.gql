@@ -1,0 +1,15 @@
+mutation($title: String!, $description: String!, cookingTime: Intger!){
+  createRecipe(
+    input: {
+      title: $title,
+      description: $description
+      cookingTime: $cookingTime
+    }
+    recipe{
+      id
+      title
+      description
+      cookingTime
+    }
+  )
+}

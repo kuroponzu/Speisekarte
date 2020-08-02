@@ -1,0 +1,13 @@
+mutation($id: Intger!){
+  deleteRecipe(
+    input: {
+      id: $id
+    }
+    recipe{
+      id
+      title
+      description
+      cookingTime
+    }
+  )
+}

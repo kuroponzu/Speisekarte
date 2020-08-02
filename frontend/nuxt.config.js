@@ -53,6 +53,7 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
+    '@nuxtjs/apollo'
   ],
   /*
   ** vuetify module configuration
@@ -80,5 +81,16 @@ export default {
   ** See https://nuxtjs.org/api/configuration-build/
   */
   build: {
+  },
+  
+  apollo: {
+    clientConfigs: {
+      default: {
+        httpEndpoint: 'http://localhost:3000/graphql'
+      }
+    }
+  },
+  server: {
+    port: 8080
   }
 }
