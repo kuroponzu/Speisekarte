@@ -15,7 +15,7 @@ module Mutations
       recipe.update(
         title: args[:title],
         description: args[:description],
-        cooking_time: args[:cooking_time],
+        cooking_time: args[:cooking_time]
       )
       {
         recipe: recipe,

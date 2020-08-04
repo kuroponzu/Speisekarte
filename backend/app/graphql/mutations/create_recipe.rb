@@ -13,7 +13,7 @@ module Mutations
       recipe = Recipe.create(
         title: args[:title],
         description: args[:description],
-        cooking_time: args[:cooking_time],
+        cooking_time: args[:cooking_time]
       )
       {
         recipe: recipe,

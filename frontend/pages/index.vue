@@ -79,7 +79,7 @@ export default {
             id: recipe.id,
             title: recipe.title,
             description: recipe.description,
-            cookingTime: 10,
+            cookingTime: recipe.cookingTime,
           },
           refetchQueries: [{
             query: recipes
