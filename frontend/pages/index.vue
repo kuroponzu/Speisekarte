@@ -1,5 +1,12 @@
 <template>
   <v-container>
+    <v-select
+      item-text="label"
+      item-value="value"
+      :items="cookingTime"
+      label="調理時間"
+      return-object
+      />
     <v-row>
       <v-col cols="6" offset="3">
         <v-card>
@@ -66,7 +73,12 @@ export default {
         title: '',
         description: '',
         cookingTime: 0,
-      }
+      },
+      cookingTime: [
+        { label: '早い', value: 5},
+        { label: '普通', value: 10},
+        { label: '遅い', value: 15}
+      ]
     }
   },
   methods: {
