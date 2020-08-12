@@ -1,12 +1,14 @@
 <template>
   <v-container>
     <v-select
+      v-model="thisWeekCookingTime"
       item-text="label"
       item-value="value"
       :items="cookingTime"
       label="調理時間"
       return-object
       />
+    <v-btn text v-on:click="search">検索する</v-btn>
     <v-row>
       <v-col cols="6" offset="3">
         <v-card>
@@ -74,6 +76,7 @@ export default {
         description: '',
         cookingTime: 0,
       },
+      thisWeekCookingTime: ["hoge"],
       cookingTime: [
         { label: '早い', value: 5},
         { label: '普通', value: 10},
@@ -133,7 +136,10 @@ export default {
       } catch (e) {
         window.console.log(e)
       }
-    }
+    },
+    search(){
+      console.log(this.thisWeekCookingTime[0])
+    },
   },
   apollo: {
     recipes: {
