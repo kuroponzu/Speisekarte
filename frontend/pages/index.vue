@@ -138,7 +138,7 @@ export default {
       }
     },
     search(){
-      console.log(this.thisWeekCookingTime[0])
+      console.log(this.thisWeekCookingTime.value)
     },
   },
   apollo: {
