@@ -1,0 +1,8 @@
+query serchRecipesByCookingTime($cookingTime: Int!) {
+  serchRecipesByCookingTime(cookingTime: $cookingTime) {
+    id
+    title
+    description
+    cookingTime
+  }
+}

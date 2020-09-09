@@ -1,5 +1,28 @@
 <template>
   <v-container>
+    <v-select
+      v-model="thisWeekCookingTime"
+      item-text="label"
+      item-value="value"
+      :items="cookingTime"
+      label="調理時間"
+      return-object
+      />
+    <v-btn text v-on:click="search">検索する</v-btn>
+    <div v-if='serchRecipesByCookingTime'>
+      <v-col cols="6" offset="3">
+        <v-card>
+          <v-card-title>
+            <!-- <v-btn text icon @click="deleteRecipe(recipe)">
+              <v-icon>clear</v-icon>
+            </v-btn> -->
+          </v-card-title>
+          <v-card-text>{{ serchRecipesByCookingTime.title }}</v-card-text>
+          <v-card-text>{{ serchRecipesByCookingTime.description }}</v-card-text>
+          <v-card-text>{{ serchRecipesByCookingTime.cookingTime }}</v-card-text>
+        </v-card>
+      </v-col>
+    </div>
     <v-row>
       <v-col cols="6" offset="3">
         <v-card>
@@ -57,21 +80,31 @@ import recipes from '~/apollo/queries/recipes'
 import createRecipe from '~/apollo/mutations/createRecipe'
 import deleteRecipe from '~/apollo/mutations/deleteRecipe'
 import updateRecipe from '~/apollo/mutations/updateRecipe'
+import serchRecipesByCookingTime from '~/apollo/queries/serchRecipesByCookingTime'
 
 export default {
   data() {
     return {
-      recipes: {},
+      serchRecipe: null,
       newRecipe: {
         title: '',
         description: '',
         cookingTime: 0,
-      }
+      },
+      thisWeekCookingTime: [""],
+      cookingTime: [
+        { label: '早い', value: 5},
+        { label: '普通', value: 10},
+        { label: '遅い', value: 15}
+      ]
     }
+  },
+  mounted: function() {
+    console.log(this.serchRecipe)
+    console.log(typeof(this.serchRecipe))
   },
   methods: {
     async createRecipe(recipe) {
-
       try {
         await this.$apollo.mutate({
           mutation: createRecipe,
@@ -121,11 +154,26 @@ export default {
       } catch (e) {
         window.console.log(e)
       }
-    }
+    },
+    async search(){
+      try{
+        await this.$apollo.query({
+          query: serchRecipesByCookingTime,
+          variables: { cookingTime: 10 }
+          }
+        )
+      } catch (e) {
+        console.log(e)
+      }
+    },
   },
   apollo: {
     recipes: {
       query: recipes
+    },
+    serchRecipesByCookingTime: {
+      query: serchRecipesByCookingTime,
+      variables: { cookingTime: 0 }
     }
   }
 }
